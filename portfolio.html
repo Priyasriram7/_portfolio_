@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Priyadharshini Sriram A T</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #12121a;
+    --bg3: #1a1a26;
+    --accent: #7c6cfa;
+    --accent2: #a78bfa;
+    --text: #f0eeff;
+    --muted: #9090b0;
+    --border: rgba(124,108,250,0.18);
+    --card: rgba(255,255,255,0.04);
+    --tag-bg: rgba(124,108,250,0.15);
+    --tag-txt: #a78bfa;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    padding: 1rem 2.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem; letter-spacing: -0.02em; color: var(--text); }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--muted); font-size: 0.875rem; font-weight: 400; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+
+  #hero { min-height: 100vh; display: flex; align-items: center; padding: 6rem 2.5rem 4rem; position: relative; overflow: hidden; }
+  .hero-glow { position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, rgba(124,108,250,0.12) 0%, transparent 70%); top: 50%; left: 50%; transform: translate(-50%, -55%); pointer-events: none; }
+  .hero-content { position: relative; max-width: 760px; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: var(--tag-bg); border: 1px solid var(--border); color: var(--tag-txt); font-size: 0.8rem; font-weight: 500; padding: 5px 14px; border-radius: 999px; margin-bottom: 1.5rem; letter-spacing: 0.03em; }
+  .dot { width: 7px; height: 7px; background: var(--accent); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.85)} }
+  .hero-name { font-family: 'Syne', sans-serif; font-size: clamp(2.8rem, 6vw, 4.5rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 0.5rem; }
+  .hero-name .highlight { background: linear-gradient(135deg, #7c6cfa, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-title { font-size: 1.1rem; color: var(--muted); font-weight: 300; margin-bottom: 1.25rem; }
+  .hero-bio { font-size: 1rem; color: var(--muted); max-width: 540px; line-height: 1.75; margin-bottom: 2rem; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary { background: var(--accent); color: #fff; padding: 0.7rem 1.6rem; border-radius: 8px; font-size: 0.9rem; font-weight: 500; text-decoration: none; border: none; cursor: pointer; transition: opacity 0.2s, transform 0.15s; font-family: 'DM Sans', sans-serif; }
+  .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+  .btn-outline { background: transparent; color: var(--text); padding: 0.7rem 1.6rem; border-radius: 8px; font-size: 0.9rem; font-weight: 400; text-decoration: none; border: 1px solid var(--border); transition: border-color 0.2s, transform 0.15s; font-family: 'DM Sans', sans-serif; }
+  .btn-outline:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .hero-social { display: flex; gap: 0.75rem; margin-top: 2rem; flex-wrap: wrap; }
+  .social-pill { display: flex; align-items: center; gap: 6px; background: var(--card); border: 1px solid var(--border); color: var(--muted); font-size: 0.78rem; padding: 5px 12px; border-radius: 999px; text-decoration: none; transition: color 0.2s, border-color 0.2s; }
+  .social-pill:hover { color: var(--text); border-color: var(--accent2); }
+
+  section { padding: 5rem 2.5rem; max-width: 1100px; margin: 0 auto; }
+  .section-label { font-family: 'Syne', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+  .section-title { font-family: 'Syne', sans-serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 2.5rem; line-height: 1.15; }
+  .divider { border: none; border-top: 1px solid var(--border); max-width: 1100px; margin: 0 auto; }
+
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; }
+  .project-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; transition: border-color 0.25s, transform 0.2s; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+  .project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), #c084fc); opacity: 0; transition: opacity 0.25s; }
+  .project-card:hover { border-color: rgba(124,108,250,0.4); transform: translateY(-3px); }
+  .project-card:hover::before { opacity: 1; }
+  .project-num { font-size: 0.75rem; color: var(--accent); font-family: 'Syne', sans-serif; font-weight: 600; margin-bottom: 0.75rem; letter-spacing: 0.05em; }
+  .project-name { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text); }
+  .project-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.25rem; flex: 1; }
+  .project-footer { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; flex-wrap: wrap; }
+  .tech-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tech-tag { background: var(--tag-bg); color: var(--tag-txt); font-size: 0.72rem; padding: 3px 10px; border-radius: 999px; font-weight: 500; border: 1px solid rgba(124,108,250,0.2); }
+  .github-link { display: inline-flex; align-items: center; gap: 5px; font-size: 0.78rem; color: var(--muted); text-decoration: none; border: 1px solid var(--border); padding: 5px 12px; border-radius: 8px; transition: color 0.2s, border-color 0.2s; white-space: nowrap; flex-shrink: 0; }
+  .github-link:hover { color: var(--text); border-color: var(--accent); }
+  .github-link svg { width: 13px; height: 13px; fill: currentColor; }
+
+  .skills-wrapper { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+  .skill-group { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; }
+  .skill-group-title { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent2); margin-bottom: 1rem; }
+  .skill-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .skill-list li { font-size: 0.875rem; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+  .skill-list li::before { content: ''; width: 5px; height: 5px; background: var(--accent); border-radius: 50%; flex-shrink: 0; }
+
+  .edu-timeline { display: flex; flex-direction: column; gap: 1rem; }
+  .edu-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
+  .edu-degree { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.25rem; }
+  .edu-school { font-size: 0.85rem; color: var(--muted); }
+  .edu-meta { text-align: right; flex-shrink: 0; }
+  .edu-year { font-size: 0.8rem; color: var(--accent); font-weight: 500; }
+  .edu-grade { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
+
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .contact-item { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; text-decoration: none; transition: border-color 0.2s; display: block; }
+  .contact-item:hover { border-color: var(--accent); }
+  .contact-label { font-size: 0.75rem; color: var(--accent); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.35rem; }
+  .contact-value { font-size: 0.9rem; color: var(--text); word-break: break-all; }
+
+  footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--border); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">P<span>.</span>S</div>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="hero" style="padding-top:0; max-width:100%;">
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow"><span class="dot"></span>Open to opportunities</div>
+    <h1 class="hero-name">Priyadharshini<br><span class="highlight">Sriram A T</span></h1>
+    <p class="hero-title">Computer Science Engineering Student &mdash; Bannari Amman Institute of Technology</p>
+    <p class="hero-bio">Aspiring SDE passionate about building scalable, AI-driven applications. Strong foundations in full-stack development, Data Structures, and problem solving.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="#contact" class="btn-outline">Contact Me</a>
+    </div>
+    <div class="hero-social">
+      <a href="https://github.com/Priyasriram7" class="social-pill" target="_blank">⌥ GitHub</a>
+      <a href="https://www.linkedin.com/in/priyadharshini-sriram-a-t-438a4b319/" class="social-pill" target="_blank">in LinkedIn</a>
+      <a href="https://leetcode.com/u/priyasriram7/" class="social-pill" target="_blank">✦ LeetCode</a>
+      <a href="https://www.hackerrank.com/profile/srirampriyadhar1" class="social-pill" target="_blank">◆ HackerRank</a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<section id="projects" style="max-width:1100px;">
+  <p class="section-label">Work</p>
+  <h2 class="section-title">Featured Projects</h2>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-num">01</div>
+      <div class="project-name">Smart Request Management Portal</div>
+      <p class="project-desc">Full-stack system to manage and track user requests with real-time status updates, authentication, and backend API integration with a NoSQL database.</p>
+      <div class="project-footer">
+        <div class="tech-tags">
+          <span class="tech-tag">JavaScript</span>
+          <span class="tech-tag">NodeJS</span>
+          <span class="tech-tag">ExpressJS</span>
+          <span class="tech-tag">MongoDB</span>
+        </div>
+        <a href="https://github.com/Priyasriram7/Smart_Request_Portal" class="github-link" target="_blank">
+          <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          View code
+        </a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">02</div>
+      <div class="project-name">News Application</div>
+      <p class="project-desc">Web app that fetches real-time news via REST APIs with search and category-based filtering. Built a fully responsive UI for a seamless reading experience.</p>
+      <div class="project-footer">
+        <div class="tech-tags">
+          <span class="tech-tag">HTML</span>
+          <span class="tech-tag">CSS</span>
+          <span class="tech-tag">JavaScript</span>
+          <span class="tech-tag">REST API</span>
+        </div>
+        <a href="https://github.com/Priyasriram7/News_app" class="github-link" target="_blank">
+          <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          View code
+        </a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">03</div>
+      <div class="project-name">Skin Disease Detection</div>
+      <p class="project-desc">AI-based system to detect skin diseases from images. Implemented image upload, preprocessing pipeline, and health suggestions based on ML predictions.</p>
+      <div class="project-footer">
+        <div class="tech-tags">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">OpenCV</span>
+          <span class="tech-tag">Machine Learning</span>
+        </div>
+        <a href="https://github.com/Priyasriram7/SkinDiseaseApp" class="github-link" target="_blank">
+          <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          View code
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider" />
+
+<section id="skills" style="max-width:1100px;">
+  <p class="section-label">Expertise</p>
+  <h2 class="section-title">Technical Skills</h2>
+  <div class="skills-wrapper">
+    <div class="skill-group">
+      <div class="skill-group-title">Languages</div>
+      <ul class="skill-list">
+        <li>Java</li><li>Python</li><li>JavaScript</li><li>C</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Web Development</div>
+      <ul class="skill-list">
+        <li>HTML &amp; CSS</li><li>ReactJS</li><li>NodeJS</li><li>ExpressJS</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Core CS</div>
+      <ul class="skill-list">
+        <li>Data Structures &amp; Algorithms</li><li>OOP</li><li>DBMS / SQL</li><li>OS &amp; Networks</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Tools</div>
+      <ul class="skill-list">
+        <li>Git &amp; GitHub</li><li>REST APIs</li><li>Postman</li><li>Basic Cloud</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<section id="education" style="max-width:1100px;">
+  <p class="section-label">Background</p>
+  <h2 class="section-title">Education</h2>
+  <div class="edu-timeline">
+    <div class="edu-card">
+      <div>
+        <div class="edu-degree">B.E — Computer Science and Engineering</div>
+        <div class="edu-school">Bannari Amman Institute of Technology</div>
+      </div>
+      <div class="edu-meta">
+        <div class="edu-year">2023 – 2027</div>
+        <div class="edu-grade">CGPA: 7.48</div>
+      </div>
+    </div>
+    <div class="edu-card">
+      <div>
+        <div class="edu-degree">HSC (Higher Secondary)</div>
+        <div class="edu-school">Chellammal Matric Girls Hr. Sec. School</div>
+      </div>
+      <div class="edu-meta">
+        <div class="edu-year">2023</div>
+        <div class="edu-grade">73%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<section id="contact" style="max-width:1100px;">
+  <p class="section-label">Get in touch</p>
+  <h2 class="section-title">Contact</h2>
+  <div class="contact-grid">
+    <a href="mailto:srirampriyadharshini7@gmail.com" class="contact-item">
+      <div class="contact-label">Email</div>
+      <div class="contact-value">srirampriyadharshini7@gmail.com</div>
+    </a>
+    <a href="tel:+917339069442" class="contact-item">
+      <div class="contact-label">Phone</div>
+      <div class="contact-value">+91 73390 69442</div>
+    </a>
+    <a href="https://www.linkedin.com/in/priyadharshini-sriram-a-t-438a4b319/" target="_blank" class="contact-item">
+      <div class="contact-label">LinkedIn</div>
+      <div class="contact-value">priyadharshini-sriram-a-t-438a4b319</div>
+    </a>
+    <a href="https://github.com/Priyasriram7" target="_blank" class="contact-item">
+      <div class="contact-label">GitHub</div>
+      <div class="contact-value">github.com/Priyasriram7</div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  Built with care &mdash; Priyadharshini Sriram A T &copy; 2025
+</footer>
+
+</body>
+</html>
